@@ -25,35 +25,58 @@
 .parent {
     width: 800px;
     height: 500px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 4fr;
     background: rgb(246, 248, 246);
-    box-shadow: 20px 20px 50px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 20px 20px 30px 5px rgba(0, 0, 0, 0.2);
 }
 
-.name {
-    font-weight: 500;
-    line-height: 4em;
-}
-
+.name,
 .stats {
-    flex: 0 30%;
-    padding: 100px 40px 0 0;
     text-align: right;
+    padding-right: 40px;
     position: relative;
 }
 
-.stats::after {
+.name::after,
+.stats:after {
     content: '';
     position: absolute;
-    top: 3rem;
-    bottom: 3rem;
-    right: .5rem;
+    right: 0;
     border-left: 1px solid rgb(0, 0, 0, 0.5);
 }
 
+.name::after {
+    top: 4em;
+    bottom: 0;
+}
+
+.stats::after {
+    top: 0;
+    bottom: 4em;
+}
+
+.name {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-weight: 500;
+    line-height: 10em;
+}
+
+.stats {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
 .details {
-    flex: 0 70%;
-    padding-top: 100px;
-    padding-left: 30px;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding: 0 70px 0 40px;
     text-align: left;
+}
+
+.detailTop {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
 }
